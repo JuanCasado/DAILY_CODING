@@ -1,0 +1,15 @@
+CC=g++
+CFLAGS=-std=c++17 -g -Wall
+TARGET=SUM_SEARCH
+
+all: $(TARGET)
+
+SUM_SEARCH: SUM_SEARCH.o
+	$(CC) $(CFLAGS) SUM_SEARCH.o -o SUM_SEARCH
+
+SUM_SEARCH.o: SUM_SEARCH.cc
+	$(CC) $(CFLAGS) -c SUM_SEARCH.cc SUM_SEARCH.hpp
+
+.PHONY: clean
+clean:
+	rm -f $(TARGET) *.o
