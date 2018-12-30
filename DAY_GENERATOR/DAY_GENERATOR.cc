@@ -84,13 +84,14 @@ void DayGenerator::newDay(void) {
           std::cout << "ERROR OPENING main.cc FILE" << std::endl;
         }
         newcc.close();
-    }
 
-    system("git add *");
-    std::string commit = "git commit -m \"DAY" + std::to_string(+_day_num) +
-                         "::" + _name + " : " + _description + "\"";
-    system(commit.c_str());
-    system("git push");
+        std::string add = "git add " + folder_name + "/*";
+        system(add.c_str());
+        std::string commit = "git commit -m \"DAY" + std::to_string(+_day_num) +
+                             "::" + _name + " : " + _description + "\"";
+        system(commit.c_str());
+        system("git push");
+    }
 }
 
 void DayGenerator::setNum(void) {
