@@ -46,14 +46,14 @@ void DayGenerator::newDay(void) {
         new_make.open(folder_name + "/Makefile",
                       std::ios::in | std::ios::out | std::ios::app);
         if (new_make.is_open()) {
-          new_make << "CC=g++\nCFLAGS = -std = c++2a -g -Wall\nTARGET = "+_name+"\n\n"+
+          new_make << "CC=g++\nCFLAGS = -std=c++2a -g -Wall\nTARGET = "+_name+"\n\n"+
                         " all : $(TARGET)\n\n"
                         "$(TARGET):.$(TARGET).o .main.o\n"
                         "\t$(CC) $(CFLAGS) $^ -o $@\n"
                         ".$(TARGET).o : $(TARGET).cc $(TARGET).hpp\n"
                         "\t$(CC) $(CFLAGS) -c $< -o $@\n"
                         ".main.o : main.cc $(TARGET).hpp\n"
-                        "\t$(CC) $(CFLAGS) -c $<-o $@\n\n"
+                        "\t$(CC) $(CFLAGS) -c $< -o $@\n\n"
                         ".PHONY : clean\nclean:\n"
                         "\trm - f $(TARGET) *.o *.gch .*.o .*.gch\n"
                         << std::endl;
