@@ -85,6 +85,12 @@ void DayGenerator::newDay(void) {
         }
         newcc.close();
     }
+
+    system("git add *");
+    std::string commit = "git commit -m \"DAY" + std::to_string(+_day_num) +
+                         "::" + _name + " : " + _description + "\"";
+    system(commit.c_str());
+    system("git push");
 }
 
 void DayGenerator::setNum(void) {
