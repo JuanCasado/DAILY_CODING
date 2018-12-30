@@ -87,10 +87,15 @@ void DayGenerator::newDay(void) {
 
         std::string add = "git add " + folder_name + "/*";
         system(add.c_str());
-        std::string commit = "git commit -m \"DAY" + std::to_string(+_day_num) +
-                             "::" + _name + " : " + _description + "\"";
+        std::string commit = "git commit -m \"DAY" + std::to_string(+_day_num) + "::" + _name + " : " + _description + "\"";
         system(commit.c_str());
         system("git push");
+        std::string sublime = "sublime "+folder_name;
+        system(sublime.c_str());
+        std::string make = "make "+folder_name;
+        system(make.c_str());
+        std::string cd = "cd "+folder_name;
+        system(cd.c_str());
     }
 }
 
