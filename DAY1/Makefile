@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS=-std=c++17 -g -Wall
+CFLAGS=-std=c++2a -g -Wall
 TARGET=SUM_SEARCH
 
 all: $(TARGET)

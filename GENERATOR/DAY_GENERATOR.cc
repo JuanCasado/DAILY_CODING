@@ -33,7 +33,7 @@ void DayGenerator::newDay(void) {
         new_main.open(folder_name + "/main.cc",
                       std::ios::in | std::ios::out | std::ios::app);
         if (new_main.is_open()) {
-          new_main << "#include \"" + _name + ".hpp \"\n\n"
+          new_main << "#include \"" + _name + ".hpp\"\n\n"
                         "int main(int argc, char const *argv[]) "
                         "{\n\treturn 0;\n}"
                    << std::endl;
@@ -47,7 +47,7 @@ void DayGenerator::newDay(void) {
                       std::ios::in | std::ios::out | std::ios::app);
         if (new_make.is_open()) {
           new_make << "CC=g++\nCFLAGS = -std=c++2a -g -Wall\nTARGET = "+_name+"\n\n"+
-                        " all : $(TARGET)\n\n"
+                        "all : $(TARGET)\n\n"
                         "$(TARGET):.$(TARGET).o .main.o\n"
                         "\t$(CC) $(CFLAGS) $^ -o $@\n"
                         ".$(TARGET).o : $(TARGET).cc $(TARGET).hpp\n"
@@ -55,7 +55,7 @@ void DayGenerator::newDay(void) {
                         ".main.o : main.cc $(TARGET).hpp\n"
                         "\t$(CC) $(CFLAGS) -c $< -o $@\n\n"
                         ".PHONY : clean\nclean:\n"
-                        "\trm - f $(TARGET) *.o *.gch .*.o .*.gch\n"
+                        "\trm -f $(TARGET) *.o *.gch .*.o .*.gch\n"
                         << std::endl;
         } else {
           std::cout << "ERROR OPENING main.cc FILE" << std::endl;
@@ -76,7 +76,7 @@ void DayGenerator::newDay(void) {
         newcc.open(folder_name + "/" + _name + ".hpp",
                    std::ios::in | std::ios::out | std::ios::app);
         if (newcc.is_open()) {
-          newcc << "#ifdef " + _name +"_HPP\n"
+          newcc << "#ifndef " + _name +"_HPP\n"
                     "#define " + _name + "_HPP\n\n\n"
                     "#endif"
                 << std::endl;

@@ -30,14 +30,16 @@ int main(int argc, char const *argv[]){
 }
 
 void initData(std::vector<int> &num_list, int &target, const int &argc, const char *argv[]){
-    const int kdefault_lenght = std::rand() % 10 + 2;
     if (argc > 2){
+        num_list.reserve(argc);
         for (int i = 2; i < argc; ++i){
             num_list.emplace_back(std::atoi(argv[i]));
         }
         target = std::atoi(argv[1]);
     }
     else{
+        const int kdefault_lenght = std::rand() % 10 + 2;
+        num_list.reserve(kdefault_lenght);
         for (int i = 0; i < kdefault_lenght; ++i){
             num_list.emplace_back(std::rand() % 100);
         }
