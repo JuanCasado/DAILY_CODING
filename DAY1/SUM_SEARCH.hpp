@@ -1,8 +1,8 @@
+#ifndef SUM_SEARCH_HPP
+#define SUM_SEARCH_HPP
+
 #include <vector>
 #include <string>
-#include <iostream>
-#include <memory>
-#include <cstdlib>
 
 struct SumSearchData {
     int first_to_match = 0;
@@ -10,5 +10,6 @@ struct SumSearchData {
     bool matched = false;
 };
 
-void printVector(const std::vector<int> &p_vector, const std::string &separator);
 void sumSeach (const int &target, const std::vector<int> &p_vector, SumSearchData &ssd);
+
+#endif

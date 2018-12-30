@@ -4,12 +4,15 @@ TARGET=SUM_SEARCH
 
 all: $(TARGET)
 
-SUM_SEARCH: SUM_SEARCH.o
-	$(CC) $(CFLAGS) SUM_SEARCH.o -o SUM_SEARCH
+$(TARGET): .$(TARGET).o .main.o
+	$(CC) $(CFLAGS) $^ -o $@
 
-SUM_SEARCH.o: SUM_SEARCH.cc
-	$(CC) $(CFLAGS) -c SUM_SEARCH.cc SUM_SEARCH.hpp
+.$(TARGET).o: $(TARGET).cc $(TARGET).hpp
+	$(CC) $(CFLAGS) -c $< -o $@
 
+.main.o: main.cc $(TARGET).hpp
+	$(CC) $(CFLAGS) -c $< -o $@
+	
 .PHONY: clean
 clean:
-	rm -f $(TARGET) *.o
+	rm -f $(TARGET) *.o *.gch .*.o .*.gch
