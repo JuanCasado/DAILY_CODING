@@ -4,14 +4,14 @@
 
 void DayGenerator::newDay(void) {
     if (_day_num!=0){
-        std::string folder_name = "../DAY" + std::to_string(_day_num);
+        std::string folder_name = "/Users/mr.blissfulgrin/Documents/ME/DAILY_CODING/DAY" + std::to_string(_day_num);
         std::string content ;
 
         std::cout << folder_name << std::endl;
         mkdir(folder_name.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
 
         std::ofstream main_readme;
-        main_readme.open("../README.md", std::ios::in | std::ios::out | std::ios::app);
+        main_readme.open("/Users/mr.blissfulgrin/Documents/ME/DAILY_CODING/README.md", std::ios::in | std::ios::out | std::ios::app);
         if (main_readme.is_open()) {
             main_readme << "\n* **DAY" + std::to_string(_day_num) + "**: ";
             main_readme << _description << std::endl;
@@ -66,7 +66,7 @@ void DayGenerator::newDay(void) {
         newcc.open(folder_name + "/"+_name+".cc",
                    std::ios::in | std::ios::out | std::ios::app);
         if (newcc.is_open()) {
-          newcc << "#include \"" + _name << "\"" << std::endl;
+          newcc << "#include \"" + _name << ".hpp\"" << std::endl;
         } else {
           std::cout << "ERROR OPENING main.cc FILE" << std::endl;
         }
@@ -85,23 +85,24 @@ void DayGenerator::newDay(void) {
         }
         newcc.close();
 
-        std::string add = "git add " + folder_name + "/*";
-        system(add.c_str());
-        std::string commit = "git commit -m \"DAY" + std::to_string(+_day_num) + "::" + _name + " : " + _description + "\"";
-        system(commit.c_str());
-        system("git push");
+        std::string cd = "cd "+folder_name + ";";
+        std::string make = cd + "make ";
+        std::string add = cd + "git add " + "*";
+        std::string commit = cd + "git commit -m \"DAY" + std::to_string(+_day_num) + "::" + _name + " : " + _description + "\"";
+        std::string push = cd + "git push";
         std::string sublime = "sublime "+folder_name;
+
+        system(add.c_str());
+        system(commit.c_str());
+        system(push);
         system(sublime.c_str());
-        std::string make = "make "+folder_name;
         system(make.c_str());
-        std::string cd = "cd "+folder_name;
-        system(cd.c_str());
     }
 }
 
 void DayGenerator::setNum(void) {
   std::fstream last_day;
-  last_day.open("./.last_day", std::ios::in | std::ios::out);
+  last_day.open("/Users/mr.blissfulgrin/Documents/ME/DAILY_CODING/GENERATOR/.last_day", std::ios::in | std::ios::out);
   if (last_day.is_open()) {
     last_day.seekg(std::ios::beg);
     last_day.seekp(std::ios::beg);
