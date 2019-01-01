@@ -94,7 +94,7 @@ void DayGenerator::newDay(void) {
 
         system(add.c_str());
         system(commit.c_str());
-        system(push);
+        system(push.c_str());
         system(sublime.c_str());
         system(make.c_str());
     }
