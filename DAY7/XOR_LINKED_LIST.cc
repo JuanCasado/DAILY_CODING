@@ -1,8 +1,5 @@
 #include "XOR_LINKED_LIST.hpp"
 
-#include <iostream>
-
-//PRIVATE---------------------------------------------------------------------------------------------------------------------------------------
 XorLinkedList::ListNode *XorLinkedList::makeXor (const XorLinkedList::ListNode *a_ptr, const XorLinkedList::ListNode *b_ptr){
 	return reinterpret_cast<XorLinkedList::ListNode*>((reinterpret_cast<uintptr_t>(a_ptr)) ^ (reinterpret_cast<uintptr_t>(b_ptr)));
 }
@@ -43,7 +40,6 @@ XorLinkedList::ListNode *XorLinkedList::getAt(const int &pos){
 	return nullptr;
 }
 
-//PUBLIC---------------------------------------------------------------------------------------------------------------------------------------
 int XorLinkedList::size (){
 	return _size;
 }
