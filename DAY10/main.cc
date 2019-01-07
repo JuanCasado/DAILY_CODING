@@ -38,4 +38,8 @@ std::string printVector(const std::vector<int> &p_vector,
     ss << i << separator;
   }
   return ss.str();
+}#include "JOB_SCHEDULER.hpp"
+
+int main(int argc, char const *argv[]) {
+	return 0;
 }
