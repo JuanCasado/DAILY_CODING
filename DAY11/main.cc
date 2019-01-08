@@ -17,3 +17,8 @@ int main(int argc, char const *argv[]) {
   std::this_thread::sleep_for(std::chrono::milliseconds(10000));
   return 0;
 }
+#include "DICTIONARY_QUERRY.hpp"
+
+int main(int argc, char const *argv[]) {
+	return 0;
+}

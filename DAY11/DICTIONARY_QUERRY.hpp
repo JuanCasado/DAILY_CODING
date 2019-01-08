@@ -1,0 +1,5 @@
+#ifndef DICTIONARY_QUERRY_HPP
+#define DICTIONARY_QUERRY_HPP
+
+
+#endif
